@@ -7,9 +7,9 @@ import bookingValidationSchema from './booking.validation';
 
 const router = express.Router();
 
-router.post('/', auth(USER_ROLE.USER), validateRequest(bookingValidationSchema), BookingControllers.createBooking);
+router.post('/', auth(USER_ROLE.USER, USER_ROLE.ADMIN), validateRequest(bookingValidationSchema), BookingControllers.createBooking);
 
-router.get('/', auth(USER_ROLE.USER), BookingControllers.getUserAllBookings);
+router.get('/', auth(USER_ROLE.USER, USER_ROLE.ADMIN), BookingControllers.getUserAllBookings);
 
 router.put('/:id/return', auth(USER_ROLE.ADMIN), BookingControllers.updateBooking);
 
